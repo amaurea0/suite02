@@ -24,3 +24,13 @@
 
 // write your code below this comment
 
+function bubbleSort(array){
+    var sortArray = array.sort();
+    for(var i of sortArray){
+        if (typeof i != "number") sortArray = "wrong entry : only numbers allowed in an array";
+    }
+    return sortArray;
+}
+
+console.log(bubbleSort([8, 3, 0]));
+console.log(bubbleSort(["chat", 3, 0]));
