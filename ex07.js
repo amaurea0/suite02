@@ -27,3 +27,20 @@
 
 // write your code below this comment
 
+function displayCurrentTime() {
+    setInterval(ActualTime, 1000)
+}
+
+function ActualTime() {
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var seconde = now.getSeconds();
+    var time = hour + ':' + minute + ':' + seconde;
+    return console.log(time);
+}
+
+displayCurrentTime();
+
+
+

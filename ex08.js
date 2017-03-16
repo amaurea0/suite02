@@ -49,3 +49,21 @@
 */
 
 // write your own code below this comment
+
+var array =     [
+        "xxxxxxxxxxx",
+        "xxxx...x..x",
+        "xxxx...x..x",
+        "xxxx...xxxx",
+        "xxxxxxx..xx",
+        "xx..xxxxxxx",
+        "xx..xxxx.xx",
+        "x...xxxx..x",
+        "xxxxxxx..xx",
+        "xx.x.xx..xx",
+        "xxxxxxxxxxx"
+    ];
+var nbr_colomn;
+var nbr_line = array.lenght;
+
+console.log(nbr_line);
