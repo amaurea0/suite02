@@ -67,7 +67,7 @@ function searchArea(array) {
             arrayIndexPoint.push(indexOfPoint(line, nbr_point));
         }
 
-        var coordinate = coordinateOfSquare(arrayIndexPoint,nbr_point);
+        var coordinate = coordinateOfSquare(arrayIndexPoint, nbr_point);
 
         if (typeof coordinate != "undefined") {
             return squareResolution(array, coordinate, nbr_point);
@@ -93,7 +93,7 @@ function linePoint(nbr_point, caracter) {
     return line;
 }
 
-function coordinateOfSquare(arrayIndexPoint,nbr_point) {
+function coordinateOfSquare(arrayIndexPoint, nbr_point) {
     var limit = arrayIndexPoint.length - nbr_point;
     var coordinate;
 
@@ -102,11 +102,15 @@ function coordinateOfSquare(arrayIndexPoint,nbr_point) {
         for (var i = 0; i <= limit; i++) {
             var sum_index = 0;
 
-            for (var k = j_line; k < j_line + nbr_point; k++) {
+            for (var k = j_line; k < j_line + nbr_point - 1; k++) {
 
-                if (typeof arrayIndexPoint[k][i] != "undefined") sum_index += arrayIndexPoint[k][i]
+                for (var l = 0; l <= limit; l++) {
+
+                    if ((typeof (arrayIndexPoint[k][i] && arrayIndexPoint[k + 1][l]) != "undefined") && arrayIndexPoint[k][i] == arrayIndexPoint[k + 1][l]) sum_index += 1;
+                }
+
             }
-            if (sum_index == nbr_point * arrayIndexPoint[j_line][i]) coordinate = [j_line, arrayIndexPoint[j_line][i]];
+            if (sum_index == nbr_point - 1) coordinate = [j_line, arrayIndexPoint[j_line][i]];
         }
     }
     return coordinate;
@@ -158,5 +162,34 @@ var array = [
     "xx.x.xx...xx",
     "xxxxxxx.xxxx"
 ];
+
+console.log(searchArea(array));
+
+var array = [
+    '##########',
+    '#...#...##',
+    '#.#....###',
+    '#..#.#.###',
+    '#.##..#.##',
+    '#.##.#...#',
+    '###..#...#',
+    '#...##.#.#',
+    '##...#...#',
+    '##########'
+];
+
+console.log(searchArea(array));
+
+var array = [
+    '##########',
+    '#..#....##',
+    '#.....#..#',
+    '####..#..#',
+    '#....##.##',
+    '#....#.#.#',
+    '#.#......#',
+    '#.##.....#',
+    '#..#..#..#',
+    '##########'];
 
 console.log(searchArea(array));
