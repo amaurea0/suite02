@@ -99,18 +99,17 @@ function coordinateOfSquare(arrayIndexPoint, nbr_point) {
 
     for (var j_line = 0; j_line <= limit; j_line++) {
 
-        for (var i = 0; i <= limit; i++) {
+        for (var i in arrayIndexPoint[j_line]) {
             var sum_index = 0;
+            var current_value = arrayIndexPoint[j_line][i];
 
-            for (var k = j_line; k < j_line + nbr_point - 1; k++) {
+            for (var k = j_line + 1; k < j_line + nbr_point; k++) {
 
-                for (var l = 0; l <= limit; l++) {
-
-                    if ((typeof (arrayIndexPoint[k][i] && arrayIndexPoint[k + 1][l]) != "undefined") && arrayIndexPoint[k][i] == arrayIndexPoint[k + 1][l]) sum_index += 1;
-                }
-
+                if (arrayIndexPoint[k].indexOf(current_value) != -1) sum_index += 1;
             }
+
             if (sum_index == nbr_point - 1) coordinate = [j_line, arrayIndexPoint[j_line][i]];
+
         }
     }
     return coordinate;
@@ -132,64 +131,22 @@ function replaceAt(string, index, character) {
 }
 
 
-var array = [
-    "xxxxxxxxxxx",
-    "xxxx...x..x",
-    "xxxx...x..x",
-    "xxxx...xxxx",
-    "xxxxxxx..xx",
-    "xx..xxxxxxx",
-    "xx..xxxx.xx",
-    "x...xxxx..x",
-    "xxxxxxx..xx",
-    "xx.x.xx..xx",
-    "xxxxxxxxxxx"
-];
 
-console.log(searchArea(array));
+function getArray(max) {
+    var array = [];
+    for (var i = 0; i < max; i++) {
+        array[i]='';
+        for (var j = 0; j < max; j++) {
+            var n = Math.random();
+            if (n < 0.3) array[i] += '#';
+            else array[i] += '.';
+        }
+    }
+    return array;
+}
 
-var array = [
-    "xxxxxxxxx.xx",
-    "xxxx...x...x",
-    "xxxx...x...x",
-    "xxxx...xxx.x",
-    "xxxxxxx...xx",
-    "xx..xxxxxx.x",
-    "xx..xxxx..xx",
-    "x...xxxx..x",
-    "xxxxxxx...xx",
-    "xx.x.xx...xx",
-    "xx.x.xx...xx",
-    "xxxxxxx.xxxx"
-];
 
-console.log(searchArea(array));
-
-var array = [
-    '##########',
-    '#...#...##',
-    '#.#....###',
-    '#..#.#.###',
-    '#.##..#.##',
-    '#.##.#...#',
-    '###..#...#',
-    '#...##.#.#',
-    '##...#...#',
-    '##########'
-];
-
-console.log(searchArea(array));
-
-var array = [
-    '##########',
-    '#..#....##',
-    '#.....#..#',
-    '####..#..#',
-    '#....##.##',
-    '#....#.#.#',
-    '#.#......#',
-    '#.##.....#',
-    '#..#..#..#',
-    '##########'];
-
+var array = getArray(20)
+console.log(array)
+console.log('-----------------------------------')
 console.log(searchArea(array));
